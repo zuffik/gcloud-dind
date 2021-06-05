@@ -8,3 +8,4 @@ RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
 RUN tar xzf google-cloud-sdk-343.0.0-linux-x86_64.tar.gz
 RUN ./google-cloud-sdk/install.sh
 ENV PATH="$PATH:/sdk/google-cloud-sdk/bin"
+RUN service docker start
