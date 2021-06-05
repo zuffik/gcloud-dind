@@ -1,18 +1,9 @@
-# https://stackoverflow.com/a/43574692/10591722
+FROM python:3.7.10-alpine3.12
 
-FROM docker:latest
+RUN apk add --update docker openrc
+RUN rc-update add docker boot
+RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-343.0.0-linux-x86_64.tar.gz
+RUN tar xvzf google-cloud-sdk-343.0.0-linux-x86_64.tar.gz
+RUN ./google-cloud-sdk/install.sh
+RUN ./google-cloud-sdk/bin/gcloud init
 
-RUN apk add --no-cache \
- bash \
- build-base \
- curl \
- git \
- libffi-dev \
- openssh \
- openssl-dev \
- python \
- py-pip \
- python-dev
-
-RUN pip install docker-compose fabric
-RUN curl https://sdk.cloud.google.com | bash -s -- --disable-prompts
