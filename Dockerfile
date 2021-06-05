@@ -1,4 +1,4 @@
-FROM python:3.7.10-alpine3.12
+FROM alpine
 
 WORKDIR /sdk
 
